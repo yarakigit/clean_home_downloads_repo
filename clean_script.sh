@@ -40,6 +40,8 @@ for browse_element in $browse; do
                 else
                     find $tmp_exe_file_dir -type f | xargs -i rm {}
                 fi
+            else
+                mkdir -p $tmp_exe_file_dir
             fi
         done
     elif [ $browse_element = "Firefox" ];
@@ -54,6 +56,8 @@ for browse_element in $browse; do
                 else
                     find $tmp_exe_file_dir -type f | xargs -i rm {}
                 fi
+            else
+                mkdir -p $tmp_exe_file_dir
             fi
         done        
     fi
