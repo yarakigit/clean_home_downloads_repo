@@ -27,6 +27,16 @@ if [[ $OSTYPE = "darwin"* ]]; then
     MacOS_flag=1
 fi
 
+tmp_exe_file_dir=$HOME/$Downloads_dir
+echo "[log] rm file list HOME/Downloads"
+echo "[log] ┗━ file"
+find $tmp_exe_file_dir -maxdepth 1 -type f
+if [ $MacOS_flag -eq 1 ];then
+    find $tmp_exe_file_dir -maxdepth 1 -type f| xargs -I {} rm {}
+else
+    find $tmp_exe_file_dir -maxdepth 1 -type f| xargs -i rm {}
+fi
+
 for browse_element in $browse; do
     if [ $browse_element = "Chrome" ];
     then
@@ -34,6 +44,14 @@ for browse_element in $browse; do
             tmp_exe_file_dir=$HOME/$Downloads_dir/$browse_element/$chrome_user_element
             if [ -e $tmp_exe_file_dir ]; then
                 echo "[log] rm file list Chrome"
+                echo "[log] ┗━ directory"
+                find $tmp_exe_file_dir -mindepth 1 -type d
+                if [ $MacOS_flag -eq 1 ];then
+                    find $tmp_exe_file_dir -mindepth 1 -type d | xargs -I {} rm -r {}
+                else
+                    find $tmp_exe_file_dir -mindepth 1 -type d | xargs -i rm -r {}
+                fi
+                echo "[log] ┗━ file"
                 find $tmp_exe_file_dir -type f
                 if [ $MacOS_flag -eq 1 ];then
                     find $tmp_exe_file_dir -type f | xargs -I {} rm {}
@@ -50,6 +68,14 @@ for browse_element in $browse; do
             tmp_exe_file_dir=$HOME/$Downloads_dir/$browse_element/$firefox_user_element
             if [ -e $tmp_exe_file_dir ]; then
                 echo "[log] rm file list Firefox"
+                echo "[log] ┗━ directory"
+                find $tmp_exe_file_dir -mindepth 1 -type d
+                if [ $MacOS_flag -eq 1 ];then
+                    find $tmp_exe_file_dir -mindepth 1 -type d | xargs -I {} rm -r {}
+                else
+                    find $tmp_exe_file_dir -mindepth 1 -type d | xargs -i rm -r {}
+                fi
+                echo "[log] ┗━ file"
                 find $tmp_exe_file_dir -type f
                 if [ $MacOS_flag -eq 1 ];then
                     find $tmp_exe_file_dir -type f | xargs -I {} rm {}
