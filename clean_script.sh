@@ -1,7 +1,7 @@
 install_repo_path=".clean_home_downloads_repo"
 settings_json_file_name="settings_clean_script.json"
 settings_json=$HOME/$install_repo_path/$settings_json_file_name
-Downloads_dir="Downloads"
+Downloads_dir=`cat $settings_json | jq -r ".Downloads_dir"`
 browse=("Chrome" "Firefox")
 
 chrome_user_num=`cat $settings_json | jq "[.Chrome[]] | length"`

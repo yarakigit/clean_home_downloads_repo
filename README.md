@@ -9,6 +9,7 @@ $ git clone git@github.com:yarakigit/clean_home_downloads_repo.git $HOME/.clean_
 - `$HOME/.clean_home_downloads_repo/settings_clean_script.json`
 ~~~json
 {
+  "Downloads_dir":"Downloads",
   "Chrome":
   [
     "usr1",
